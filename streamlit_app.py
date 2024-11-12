@@ -8,7 +8,7 @@ st.write("For faster and more efficient reporting - A report a day keeps the sen
 
 reportingOfficer = st.selectbox(
     label="Who are you reporting to?", 
-    options=["1cl", "2cl"]
+    options=["Maam", "Sir"]
 )
 
 suffix = "maam" if reportingOfficer == "1cl" else "sir"
