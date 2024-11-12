@@ -11,7 +11,7 @@ reportingOfficer = st.selectbox(
     options=["Maam", "Sir"]
 )
 
-suffix = "maam" if reportingOfficer == "1cl" else "sir"
+suffix = "maam" if reportingOfficer.lower() == "maam" else "sir"
 
 activity_today = st.selectbox(
     label="Activity for today", 
@@ -23,7 +23,7 @@ if activity_today == "Others/ Custom":
 else:
     custom_activity = activity_today
 
-formatted_text = f"{suffix.capitalize()} Attendance for {current_time.strftime('%d')} {current_time.strftime('%B')} {current_time.year} {custom_activity} {suffix}\n"
+formatted_text = f"{suffix.capitalize()} Attendance for {current_time.strftime('%d')} {current_time.strftime('%B')} {current_time.year}\n{custom_activity} {suffix}\n"
 
 personnel = [
     "andrade", "capulong", "corpuz", "de castro", "hernandez", 
@@ -68,8 +68,4 @@ else:
 
 formatted_text += f"\n\n{suffix} 08 personnel all accounted for {suffix}"
 
-st.markdown(f"""
-    <div style="padding: 20px; border: 2px solid #ddd; border-radius: 5px;">
-        <p style="font-size: 18px; line-height: 1.6;">{formatted_text}</p>
-    </div>
-""", unsafe_allow_html=True)
+st.text_area("Formatted Report", formatted_text, height=400)
